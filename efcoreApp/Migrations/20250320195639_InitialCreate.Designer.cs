@@ -11,7 +11,7 @@ using efcoreApp.Data;
 namespace efcoreApp.Migrations
 {
     [DbContext(typeof(DataDbContext))]
-    [Migration("20250319024502_InitialCreate")]
+    [Migration("20250320195639_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

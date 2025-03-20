@@ -17,8 +17,8 @@ namespace efcoreApp.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CourseId = table.Column<int>(type: "INTEGER", nullable: false),
                     StudentId = table.Column<int>(type: "INTEGER", nullable: false),
+                    CourseId = table.Column<int>(type: "INTEGER", nullable: false),
                     RegistrationDate = table.Column<DateTime>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>

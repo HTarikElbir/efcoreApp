@@ -3,14 +3,17 @@
 <hr>
 
 <form asp-controller="CourseRegistration" asp-action="Create" method="post">
-    <input type="hidden" asp-for="Id" />
     <div class="mb-3">
         <label asp-for="StudentId" class="form-label">Student</label>
-        <select asp-items="ViewBag.Students" class="form-control"></select>
+        <select asp-for="StudentId" asp-items="ViewBag.Students" class="form-control">
+            <option value="">Please Select</option>
+        </select>
     </div>
     <div class="mb-3">
         <label asp-for="CourseId" class="form-label">Course</label>
-        <select asp-items="ViewBag.Courses" class="form-control"></select>
+        <select asp-for="CourseId" asp-items="ViewBag.Courses" class="form-control">
+            <option value="">Please Select</option>
+        </select>
     </div>
    
 
