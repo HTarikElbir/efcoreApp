@@ -22,6 +22,7 @@ namespace efcoreApp.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Course course)
         {
             if (course == null)
@@ -87,6 +88,38 @@ namespace efcoreApp.Controllers
             }
 
             return View(course);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            var course = await _context.Courses.FindAsync(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+            return View(course);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var course = await _context.Courses.FindAsync(id);
+
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            _context.Courses.Remove(course);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
         }
     }
 }
