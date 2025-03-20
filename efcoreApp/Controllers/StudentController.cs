@@ -19,6 +19,7 @@ namespace efcoreApp.Controllers
             return View();
         }
 
+      
         [HttpPost]
         public async Task<IActionResult> Create(Student student)
         {
@@ -59,7 +60,7 @@ namespace efcoreApp.Controllers
             }
 
             if(ModelState.IsValid)
-            {
+            {   
                 try
                 {
                     _context.Update(student);
