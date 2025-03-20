@@ -1,12 +1,12 @@
 ﻿@model Student
-<h2>Add Student</h2>
+<h2>Edit Student</h2>
 <hr>
 
 <form asp-controller="Student" asp-action="Create" method="post">
     <input type="hidden" asp-for="Id" />
     <div class="mb-3">
         <label asp-for="Name" class="form-label">Student Name</label>
-        <input asp-for="Name" class="form-control" />        
+        <input asp-for="Name" class="form-control" />
     </div>
     <div class="mb-3">
         <label asp-for="SurName" class="form-label">Student SurName</label>
