@@ -1,9 +1,13 @@
-﻿namespace efcoreApp.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace efcoreApp.Models.Entities
 {
     public class Course
     {
         // Id is the primary key
         public int Id { get; set; }
+
+        [Display(Name = "Course Name")]
         public string? Name { get; set; }
     
     }

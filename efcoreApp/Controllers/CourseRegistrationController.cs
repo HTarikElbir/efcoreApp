@@ -3,6 +3,7 @@ using efcoreApp.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace efcoreApp.Controllers
 {
@@ -10,9 +11,13 @@ namespace efcoreApp.Controllers
     {
         public readonly DataDbContext _context = context;
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _context
+                             .CourseRegistrations
+                             .Include(s => s.Student)
+                             .Include(c => c.Course)
+                             .ToListAsync());
         }
 
         [HttpGet]
