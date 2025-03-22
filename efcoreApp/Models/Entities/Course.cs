@@ -9,6 +9,7 @@ namespace efcoreApp.Models.Entities
 
         [Display(Name = "Course Name")]
         public string? Name { get; set; }
-    
+        public ICollection<CourseRegistration> CourseRegistrations { get; set; } = new List<CourseRegistration>();
+
     }
 }

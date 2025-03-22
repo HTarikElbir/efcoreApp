@@ -42,10 +42,11 @@ namespace efcoreApp.Controllers
                 return BadRequest();
             }
             var student = await _context
-                                .Students
-                                .Include(s => s.CourseRegistrations)
-                                .ThenInclude(cr => cr.Course)
-                                .FirstOrDefaultAsync(s => s.Id == id);
+                .Students
+                .Include(s => s.CourseRegistrations)
+                .ThenInclude(cr => cr.Course)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
             // var student = await _context.Students.FirstOrDefaultAsync(s => s.Id == id);
             if (student == null)
             {

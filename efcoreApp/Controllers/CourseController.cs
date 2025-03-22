@@ -49,7 +49,12 @@ namespace efcoreApp.Controllers
             {
                 return BadRequest();
             }
-            var course = await _context.Courses.FindAsync(id);
+            var course = await _context
+                .Courses
+                .Include(c => c.CourseRegistrations)
+                .ThenInclude(s => s.Student)
+                .FirstOrDefaultAsync(c => c.Id == id);
+
             if (course == null)
             {
                 return NotFound();
