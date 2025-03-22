@@ -2,24 +2,39 @@
 <h2>Edit Student</h2> 
 <hr>
 
-<form asp-controller="Student" asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label">Student Name</label>
-        <input asp-for="Name" class="form-control" />
+<div class="row">
+    <div class="col-8">
+        <form asp-controller="Student" asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Student Name</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="SurName" class="form-label">Student SurName</label>
+                <input asp-for="SurName" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Phone" class="form-label">Phone</label>
+                <input asp-for="Phone" class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-secondary">Save</button>
+        </form>
     </div>
-    <div class="mb-3">
-        <label asp-for="SurName" class="form-label">Student SurName</label>
-        <input asp-for="SurName" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Email" class="form-label">Email</label>
-        <input asp-for="Email" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Phone" class="form-label">Phone</label>
-        <input asp-for="Phone" class="form-control" />
+    <div class="col-4">
+        <h4>Courses</h4>
+        <hr />
+        <ul>
+            @foreach(var course in Model.CourseRegistrations)
+            {
+                <li>@course.Course.Name</li>
+            }
+        </ul>
     </div>
 
-    <button type="submit" class="btn btn-secondary">Save</button>
-</form>
+</div>

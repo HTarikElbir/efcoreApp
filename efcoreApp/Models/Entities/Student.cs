@@ -13,6 +13,7 @@ namespace efcoreApp.Models.Entities
         public string? FullName => $"{Name} {SurName}";
         public string? Email { get; set; }
         public string? Phone { get; set; }
+        public ICollection<CourseRegistration> CourseRegistrations { get; set; } = new List<CourseRegistration>();
 
     }
 }
