@@ -8,9 +8,10 @@ namespace efcoreApp.Data
         public DataDbContext(DbContextOptions<DataDbContext> options) : base(options)
         {
         }
-        public DbSet<Course> Courses { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<CourseRegistration> CourseRegistrations { get; set; }
+        public DbSet<Course> Courses => Set<Course>();
+        public DbSet<Student> Students => Set<Student>();
+        public DbSet<CourseRegistration> CourseRegistrations => Set<CourseRegistration>();
+        public DbSet<Teacher> Teachers => Set<Teacher>();
 
 
     }
