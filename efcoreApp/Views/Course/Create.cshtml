@@ -10,6 +10,12 @@
         <label asp-for="Name" class="form-label">Course Name</label>
         <input asp-for="Name" class="form-control" />
     </div>
+    <div class="mb-3">
+        <label asp-for="TeacherId" class="form-label">Teacher</label>
+        <select asp-for="TeacherId" asp-items="ViewBag.Teachers" class="form-select">
+            <option value="">Please Select</option>
+        </select>
+    </div>
 
     <button type="submit" class="btn btn-secondary">Save</button>
 </form>

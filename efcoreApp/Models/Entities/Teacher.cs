@@ -7,6 +7,7 @@ namespace efcoreApp.Models.Entities
         public int TeacherId { get; set; }
         public string? Name { get; set; }
         public string? Surname { get; set; }
+        public string FullName => $"{Name} {Surname}";
         public string?  Email { get; set; }
         public string? Phone { get; set; }
         [DataType(DataType.Date)]
