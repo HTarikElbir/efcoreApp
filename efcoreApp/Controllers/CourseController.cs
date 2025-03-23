@@ -26,23 +26,29 @@ namespace efcoreApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Course course)
+        public async Task<IActionResult> Create(CourseViewModel course)
         {
             if (course == null)
             {
                 return BadRequest();
             }
-            try
+            if (ModelState.IsValid)
             {
-                _context.Courses.Add(course);
-                await _context.SaveChangesAsync();
+                try
+                {
+                    _context.Courses.Add(new Course { Id = course.Id, Name = course.Name, TeacherId = course.TeacherId });
+                    await _context.SaveChangesAsync();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+                return RedirectToAction("Index");
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
-            return RedirectToAction("Index");
+            ViewBag.Teachers = new SelectList(await _context.Teachers.ToListAsync(), "TeacherId", "FullName");
+
+            return View(course);
         }
 
         [HttpGet]
@@ -105,6 +111,7 @@ namespace efcoreApp.Controllers
                 }
                 return RedirectToAction("Index");
             }
+            ViewBag.Teachers = new SelectList(await _context.Teachers.ToListAsync(), "TeacherId", "FullName");
 
             return View(course);
         }
